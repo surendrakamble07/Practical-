@@ -1,48 +1,26 @@
-//SPDX-License-Identifier: MIT 
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-// Build the Contract
-contract StudentData
-{
-	// Create a structure for
-	// student details
-	struct Student
-	{
-		int ID;
-		string fName;
-		string lName;
-		int[2] marks;
-	}
-	// fallback () external payable {
-		
-	//  }
+contract StudentDatabase {
+    struct Student {
+        string name;
+        uint256 rollNumber;
+        string studentClass;
+    }
 
-	address owner;
-	int public stdCount = 0;
-	mapping(int => Student) public stdRecords;
+    Student[] private students;
 
-	modifier onlyOwner
-	{
-		require(owner == msg.sender);
-		_;
-	}
-	constructor()
-	{
-		owner=msg.sender;
-	}
+    function addStudent(string memory name, uint256 rollNumber, string memory studentClass) public {
+        students.push(Student(name, rollNumber, studentClass));
+    }
 
-	// Create a function to add
-	// the new records
-	function addNewRecords(int _ID,string memory _fName,string memory _lName,int[2] memory _marks) public onlyOwner
-	{
-		// Increase the count by 1
-		stdCount = stdCount + 1;
+    function getStudentByID(uint256 ID) public view returns (string memory, uint256, string memory) {
+        require(ID < students.length, "Student does not exist in database");
+        Student storage s = students[ID];
+        return (s.name, s.rollNumber, s.studentClass);
+    }
 
-		// Fetch the student details
-		// with the help of stdCount
-		stdRecords[stdCount] = Student(_ID, _fName,_lName, _marks);
-	}
-
+    function getTotalNumberOfStudents() public view returns (uint256) {
+        return students.length;
+    }
 }
-
-
