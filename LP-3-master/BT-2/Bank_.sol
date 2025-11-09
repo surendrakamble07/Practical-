@@ -1,24 +1,21 @@
-// SPDX-License-Identifier: GPL-3.0
-
-pragma solidity >=0.7.0 <0.9.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
 contract Bank {
-    
-    mapping(address=>uint) private balances;
-    
-    function getBalance() public view returns (uint) {
-        return balances[msg.sender];
-    }
+    mapping(address => uint256) public balances;
 
-    function deposit(uint amount) public payable {
-        // require(msg.value == amount);
+    function depositMoney(uint256 amount) public {
+        require(amount > 0, "Amount must be greater than zero");
         balances[msg.sender] += amount;
     }
 
-    function withdraw(uint amount) public payable {
-        require(amount <= balances[msg.sender]);
+    function withdrawMoney(uint256 amount) public {
+        require(amount > 0, "Amount must be greater than zero");
+        require(balances[msg.sender] >= amount, "Insufficient balance");
         balances[msg.sender] -= amount;
-        // msg.sender.transfer(amount);
     }
 
+    function showBalance() public view returns (uint256) {
+        return balances[msg.sender];
+    }
 }
