@@ -1,0 +1,103 @@
+Here’s a **step-by-step guide to install and run Jupyter Notebook** on Ubuntu 👇
+
+---
+
+### 🧩 **Option 1: Install using pip (Recommended)**
+
+This is the most common and simplest way.
+
+#### **Step 1: Update your system**
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+#### **Step 2: Install Python and pip (if not installed)**
+
+```bash
+sudo apt install python3 python3-pip -y
+```
+
+#### **Step 3: Install Jupyter Notebook**
+
+```bash
+pip install notebook
+```
+
+#### **Step 4: Run Jupyter Notebook**
+
+```bash
+jupyter notebook
+```
+
+💡 It will open automatically in your default web browser at:
+
+```
+http://localhost:8888
+```
+
+---
+
+### 🧱 **Option 2: Install via Anaconda (Optional, for data science)**
+
+If you use Anaconda, it comes with Jupyter preinstalled.
+
+#### **Step 1: Download Anaconda**
+
+```bash
+wget https://repo.anaconda.com/archive/Anaconda3-latest-Linux-x86_64.sh
+```
+
+#### **Step 2: Run the installer**
+
+```bash
+bash Anaconda3-latest-Linux-x86_64.sh
+```
+
+Follow on-screen prompts, then restart your terminal.
+
+#### **Step 3: Run Jupyter**
+
+```bash
+jupyter notebook
+```
+
+---
+
+### ⚙️ **Optional: Create a Desktop Shortcut or Alias**
+
+You can add an alias so you don’t have to type the full command each time.
+
+```bash
+echo "alias jn='jupyter notebook'" >> ~/.bashrc
+source ~/.bashrc
+```
+
+Now you can simply run:
+
+```bash
+jn
+```
+
+---
+
+### ✅ **Quick Troubleshooting**
+
+If you get a command not found error:
+
+```bash
+pip install --upgrade pip
+pip install notebook
+```
+
+Or if you’re using Python virtual environments:
+
+```bash
+python3 -m venv myenv
+source myenv/bin/activate
+pip install notebook
+```
+
+---
+
+Would you like me to show you how to **run Jupyter Notebook in VS Code** instead of the browser? It’s even more convenient for coding.
