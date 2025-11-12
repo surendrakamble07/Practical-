@@ -1,0 +1,8 @@
+fisrt check the pyhton is installed or not :
+python --version
+After the check install the notebook :
+pip install notebook
+Now connect the jupyter notebokk :
+jupyter notebook
+       or 
+python -m notebook
